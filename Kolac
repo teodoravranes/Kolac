@@ -185,6 +185,44 @@ return op;
 
 int main()
 {
+int opcija;
+Kolac kolacc;
+bool b;
+
+do{
+opcija=meni();
+switch(opcija)
+{
+case 1:
+b=kolacc.StaviDaSePece();
+break;
+case 2:
+b=kolacc.IspeciKolac();
+break;
+case 3:
+b=kolacc.PovecajTemperaturu();
+break;
+case 4:
+b=kolacc.SmanjiTemperaturu();
+break;
+case 5:
+b==kolacc.DodajSlag();
+break;
+case 6:
+b=kolacc.UkloniSlag();
+break;
+case 7:
+b=kolacc.ZavrsiKolac();
+break;
+}
+if(b==true)
+IspisiKolac(kolacc);
+}while(opcija>=1 && opcija<=7);
+
+return 0;
+}
+
+
 
 
 
