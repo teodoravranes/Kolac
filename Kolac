@@ -51,5 +51,43 @@ cout << "------------"<<endl;
 }
 };
 
+enum KolacStanje {U_PRIPREMI, PECE_SE, ZAGOREO, PRIPREMLJEN};
 
+class Kolac 
+{
+private:
+KolacStanje stanje;
+int temperatura;
+Preliv preliv;
+
+public:
+Kolac() {stanje = U_PRIPREMI; temperatura=20; preliv = COKOLADNI;}
+Kolac(const Kolac &copy) {stanje = copy.stanje; temperatura = copy.temperatura; preliv = copy.preliv;}
+
+KolacStanje getStanje()const {return stanje;}
+int getTemperatura()const {return temperatura;}
+Preliv getPreliv()const {return preliv;}
+
+bool StaviDaSePece()
+{
+if(stanje==U_PRIPREMI && preliv.getPreliv()==COKOLADNI)
+{
+stanje=PECE_SE;
+temperatura+=20;
+return true;
+}else{
+return false;
+}
+}
+
+bool ispeciKolac()
+{
+if(stanje==PECE_SE)
+{
+stanje=U_PRIPREMI;
+temperatura=20;
+return true;
+}else{
+return false;
+}
 
