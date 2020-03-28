@@ -91,3 +91,100 @@ return true;
 return false;
 }
 
+bool zavrsiKolac()
+{
+if (stanje==U_PRIPREMI)
+{
+stanje=PRIPREMLJEN;
+return true;
+}else{
+return false;
+}
+}
+
+bool povecajTemperaturu()
+{
+if (stanje==PECE_SE)
+{
+temperatura+=20;
+if(temperatura>100)
+{
+stanje=IZGOREO;
+temperatura=20;
+}
+return true;
+}else{
+return false;
+}
+
+bool smanjiTemperaturu()
+{
+if(stanje==PECE_SE && temperatura>=40)
+{
+temperatura-=20;
+return true;
+}else{
+return false;
+}
+}
+
+bool dodajSlag()
+{
+if(stanje==U_PRIPREMI && Preliv.tip==COKOLADNI)
+{
+Preliv.tip=COKOLADNI_SA_SLAGOM;
+return true;
+}else{
+return false;
+}
+}
+
+bool ukloniSlag()
+{
+if(stanje==U_PRIPREMI && Preliv.tip==COKOLADNI_SA_SLAGOM)
+{
+Preliv.tip=COKOLADNI;
+return true;
+}else{
+return false;
+}
+}
+
+void ispisiKolac(const Kolac &k) 
+{
+cout <<"---------------"<<endl;
+if(k.getStanje()==U_PRIPREMI)
+cout <<"Stanje: U PRIPREMI"<<endl;
+else if(k.getStanje()==PECE_SE)
+cout <<"Stanje: PECE SE"<<endl;
+else if(k.getStanje()==ZAGOREO)
+cout <<"Stanje: ZAGOREO"<<endl;
+else if(k.getStanje()==PRIPREMLJEN)
+cout <<"Stanje: PRIPREMLJEN"<<endl;
+cout <<"Temperatura:" temperatura<<endl;
+IspisiPreliv(k.getPreliv());
+cout <<"---------------"<<endl;
+}
+
+};
+
+int meni()
+{
+int op;
+cout<<"Izaberite opciju:"<<endl;
+cout<<"1.Stavi kolac na pecenje""<<endl;
+cout<<"2.Ispeci kolac"<<endl;
+cout<<"3.Povecaj temperaturu"<<endl;
+cout<<"4.Smanji temperaturu"<<endl;
+cout<<"5.Dodaj slag"<<endl;
+cout<<"6.Ukloni slag"<<endl;
+cout<<"7.Prekini pecenje"<<endl;
+cin>>op;
+return op;
+}
+
+int main()
+{
+
+
+
